@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fish? Nope! – VRC fishing accounts</title>
-    <!-- No emojis, unique typography, more physical animation -->
+    <title>Fish? Nope! – rods & boats</title>
+    <!-- handcrafted serif/system style, coffee colors but no coffee theme -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Use a mix: Fraunces for warm serif, Inter for clean UI (but not robotic) -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:opsz,wght@14..32,400;14..32,500&display=swap" rel="stylesheet">
     <style>
-        /* reset & base — no emojis, just text and symbols via CSS/pseudo */
         * {
             margin: 0;
             padding: 0;
@@ -18,154 +16,220 @@
         }
 
         body {
-            background: #181f29;
-            background-image: radial-gradient(circle at 15% 30%, #2c4053 0%, #0b171f 90%);
+            background: #3e2e22;  /* deep espresso base */
+            background-image: radial-gradient(circle at 70% 30%, #6b4f3a 0%, #2b1f16 100%);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
-            margin: 0;
-            animation: breathe 12s infinite alternate ease-in-out;
+            padding: 20px;
         }
 
-        @keyframes breathe {
-            0% { background-color: #181f29; }
-            100% { background-color: #1e2d38; }
-        }
-
-        .paper {
-            max-width: 760px;
+        /* ----- SPLASH OVERLAY (coffee COLORS only) ----- */
+        .splash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            background: #e9e1d2;
+            height: 100%;
+            background: #3c2c1e;  /* warm dark coffee */
+            background-image: radial-gradient(circle at 30% 40%, #6b523b 0%, #281e15 100%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.6s;
+            cursor: pointer;
+        }
+
+        .splash-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-card {
+            background: #dac9b5;  /* warm latte */
+            background-image: linear-gradient(145deg, #e0cfbb 0%, #cbb69c 100%);
+            max-width: 560px;
+            width: 90%;
+            padding: 60px 40px;
+            border-radius: 120px 30px 120px 30px;
+            box-shadow: 0 30px 45px -15px #1f140e, 0 0 0 6px #a48b74 inset, 0 0 0 10px #634e3b inset;
+            text-align: center;
+            border: 2px solid #8f755d;
+        }
+
+        .splash-card h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 4.4rem;
+            font-weight: 700;
+            color: #2e231b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 4px 4px 0 #af8f72, 6px 6px 0 #4d3828;
+            margin-bottom: 20px;
+        }
+
+        .splash-sub {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #4d3a29;
+            background: #ebddcc;
+            width: fit-content;
+            margin: 0 auto 30px;
+            padding: 12px 40px;
+            border-radius: 100px;
+            border: 3px solid #aa886a;
+            box-shadow: 0 5px 0 #896c51;
+        }
+
+        .click-prompt {
+            font-family: 'Fraunces', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #281c12;
+            background: #bda58b;
+            padding: 20px 32px;
+            border-radius: 60px 12px 60px 12px;
+            border: 4px solid #7a5e45;
+            box-shadow: 0 9px 0 #624b36;
+            display: inline-block;
+            transition: 0.05s;
+        }
+
+        .click-prompt:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 #624b36;
+        }
+
+        /* ----- MAIN CONTENT - COFFEE COLORS THROUGHOUT ----- */
+        .folio {
+            max-width: 880px;
+            width: 100%;
+            background: #eddcc9;  /* creamy base */
             background-image: 
-                linear-gradient(165deg, #cfc4b0 0%, #f0eadb 80%),
-                repeating-linear-gradient(45deg, rgba(140, 120, 100, 0.03) 0px, rgba(140, 120, 100, 0.03) 8px, transparent 8px, transparent 16px);
-            background-blend-mode: overlay;
-            border-radius: 64px 64px 48px 48px;
-            box-shadow: 0 30px 45px -20px #03080c, 0 0 0 2px #5e6f6f inset, 0 0 0 6px #f1e7d8 inset;
-            padding: 42px 42px 38px;
-            transition: box-shadow 0.3s;
-            animation: float 7s infinite alternate;
+                linear-gradient(150deg, #e5d2bb 0%, #f7e8d6 80%),
+                repeating-linear-gradient(45deg, rgba(100, 70, 45, 0.06) 0px, rgba(100, 70, 45, 0.06) 12px, transparent 12px, transparent 24px);
+            border-radius: 80px 80px 60px 60px;
+            box-shadow: 0 25px 45px -15px #1b130e, 0 0 0 3px #9e8b77 inset, 0 0 0 8px #e5cfba inset;
+            padding: 44px 44px 40px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            animation: sway 7s infinite alternate ease;
         }
 
-        .paper:hover {
-            box-shadow: 0 35px 50px -18px #0d1c24, 0 0 0 2px #8f9b8b inset, 0 0 0 8px #faf3e5 inset;
+        .folio:hover {
+            box-shadow: 0 30px 50px -12px #241b14, 0 0 0 4px #b7a28c inset, 0 0 0 12px #f0decc inset;
+            transform: translateY(-3px);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-6px) rotate(0.2deg); }
+        @keyframes sway {
+            0% { transform: rotate(0deg) translateY(0px); }
+            100% { transform: rotate(0.3deg) translateY(-5px); }
         }
 
-        /* header area without emojis, using decorative underlines */
-        .title-block {
-            margin-bottom: 32px;
+        .heading {
+            margin-bottom: 30px;
             position: relative;
         }
 
-        .main-title {
+        .heading h1 {
             font-family: 'Fraunces', serif;
-            font-size: 4.2rem;
+            font-size: 4.6rem;
             font-weight: 700;
-            line-height: 1;
-            color: #2d3e47;
+            color: #392d21;  /* dark roast */
             text-transform: uppercase;
             letter-spacing: -0.02em;
-            text-shadow: 4px 4px 0 #b8a68f, 6px 6px 0 rgba(0,0,0,0.1);
-            margin-bottom: 10px;
-            word-break: keep-all;
+            text-shadow: 5px 5px 0 #bb9f84, 7px 7px 0 rgba(60, 40, 25, 0.3);
             display: inline-block;
-            background: #f7efe2;
-            padding-right: 28px;
-            border-radius: 0 40px 0 0;
+            background: #ead6c2;
+            padding-right: 30px;
+            border-radius: 0 60px 0 0;
+            line-height: 1.1;
         }
 
-        .main-title span {
-            background: #5b493c;
-            color: #efe3d2;
-            font-size: 1.4rem;
+        .heading h1 span {
+            background: #765b44;  /* mocha */
+            color: #f2e1cf;
+            font-size: 1.5rem;
             font-weight: 500;
-            padding: 10px 24px 10px 32px;
-            margin-left: 16px;
+            padding: 12px 32px 12px 40px;
+            margin-left: 20px;
             border-radius: 60px;
             display: inline-block;
             vertical-align: middle;
-            box-shadow: 0 6px 0 #342b24;
-            letter-spacing: 1px;
+            box-shadow: 0 8px 0 #4a3829;
+            letter-spacing: 0.6px;
+            transform: rotate(-1deg);
             font-family: 'Inter', sans-serif;
             text-shadow: none;
-            transform: rotate(-1deg);
         }
 
-        .strap {
+        .sub {
             font-family: 'Fraunces', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
-            color: #4e5f62;
-            border-bottom: 3px wavy #a2816a;
-            padding-bottom: 16px;
-            margin-top: -8px;
+            color: #634f3d;  /* coffee brown */
+            border-bottom: 3px wavy #ae8f73;
+            padding-bottom: 18px;
             width: fit-content;
-            padding-right: 60px;
-            font-weight: 500;
+            padding-right: 70px;
+            margin-top: -8px;
         }
 
-        /* selector cards — handcrafted look */
         .card {
-            background: #fcf6ea;
-            border-radius: 48px 48px 48px 12px;
-            padding: 30px 28px;
-            margin-bottom: 36px;
-            border: 3px solid #6c7c7a;
-            box-shadow: 0 14px 0 #3a4a47, 0 20px 20px -10px #281f19;
-            transition: 0.2s;
+            background: #f7ead9;  /* cappuccino foam */
+            border-radius: 50px 50px 50px 16px;
+            padding: 28px 28px;
+            margin-bottom: 28px;
+            border: 4px solid #9a846c;  /* medium roast */
+            box-shadow: 0 12px 0 #6b5843, 0 18px 22px -12px #2a1f16;
+            transition: 0.15s;
         }
 
-        .card:nth-of-type(2) {
-            border-radius: 12px 48px 48px 48px;
+        .card:nth-of-type(3) {
+            border-radius: 16px 50px 50px 50px;
         }
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 16px 0 #3a4a47, 0 25px 25px -12px #221b16;
+            box-shadow: 0 14px 0 #6b5843, 0 24px 26px -12px #2a1f16;
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 32px;
+            gap: 18px;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
         }
 
         .card-header h2 {
             font-family: 'Fraunces', serif;
             font-weight: 600;
-            font-size: 2rem;
-            color: #251d17;
-            background: #d9c9b3;
-            padding: 8px 32px 8px 24px;
-            border-radius: 100px;
-            box-shadow: 5px 5px 0 #7c695b;
-            letter-spacing: -0.3px;
+            font-size: 2.2rem;
+            color: #322419;
+            background: #dac2ab;  /* latte */
+            padding: 8px 36px 8px 28px;
+            border-radius: 100px 20px 100px 20px;
+            box-shadow: 6px 6px 0 #8f755d;
+            border: 2px solid #7d624b;
             display: inline-block;
-            border: 2px solid #5e5347;
         }
 
-        .card-header .stamp {
-            font-family: 'Inter', sans-serif;
+        .card-header .badge {
+            background: #c7af94;  /* coffee with milk */
+            padding: 8px 22px;
+            border-radius: 40px 6px 40px 6px;
             font-weight: 500;
-            background: #bdc5b4;
-            padding: 8px 20px;
-            border-radius: 40px;
-            color: #17242b;
+            color: #2f2219;
+            border: 3px dashed #8b6f55;
+            transform: rotate(-1deg);
+            font-family: 'Inter';
             font-size: 1rem;
-            border: 2px dashed #5d4f41;
-            transform: rotate(-2deg);
         }
 
-        /* money grid */
         .money-grid {
             display: flex;
             flex-wrap: wrap;
@@ -174,30 +238,28 @@
         }
 
         .money-unit {
-            background: #b6b9a8;
-            border: 4px solid #716553;
-            color: #1b1f1c;
+            background: #d4bc9f;  /* tan */
+            border: 4px solid #8b6f53;
+            color: #2a1f14;
             font-weight: 600;
             font-size: 1.5rem;
-            padding: 16px 10px;
+            padding: 16px 8px;
             min-width: 110px;
-            border-radius: 60px 20px 60px 20px;
+            border-radius: 60px 18px 60px 18px;
             cursor: pointer;
-            box-shadow: 0 9px 0 #4b4438, 0 7px 15px rgba(0,0,0,0.3);
-            transition: 0.07s linear;
+            box-shadow: 0 10px 0 #6a533e, 0 6px 15px #35291e;
+            transition: 0.06s linear;
             font-family: 'Fraunces', serif;
             flex: 1 0 auto;
             text-align: center;
-            letter-spacing: 0.2px;
-            transform: rotate(0deg);
         }
 
         .money-unit.selected {
-            background: #cd8f5a;
-            border-color: #ffcf9a;
-            color: #14180d;
-            box-shadow: 0 6px 0 #794f2b, 0 10px 18px #3b281b;
-            transform: translateY(3px) rotate(-0.5deg);
+            background: #c4955e;  /* warm caramel */
+            border-color: #e2b484;
+            color: #231a10;
+            box-shadow: 0 7px 0 #9c6f43, 0 10px 18px #4a3725;
+            transform: translateY(3px);
             font-weight: 700;
         }
 
@@ -205,47 +267,38 @@
             font-size: 0.9rem;
             font-family: 'Inter', sans-serif;
             opacity: 0.8;
-            display: inline-block;
-            margin-left: 4px;
-        }
-
-        /* level zone */
-        .level-zone {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+            margin-left: 5px;
         }
 
         .level-row {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 24px;
         }
 
-        .level-label {
+        .level-tag {
             font-family: 'Fraunces', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 600;
-            color: #1f2f32;
-            background: #b7b9a6;
-            padding: 8px 26px;
+            color: #342619;
+            background: #cfb69b;
+            padding: 10px 30px;
             border-radius: 40px 8px 40px 8px;
-            border: 3px solid #575e4b;
-            box-shadow: 6px 6px 0 #3a443a;
+            border: 4px solid #836b52;
+            box-shadow: 7px 7px 0 #69513d;
         }
 
-        .level-badge {
-            background: #2f453b;
-            color: #efe7d3;
-            font-size: 2.8rem;
+        .level-figure {
+            background: #785e45;  /* coffee ground */
+            color: #f3e2cf;
+            font-size: 3rem;
             font-weight: 600;
             font-family: 'Fraunces', serif;
-            padding: 12px 36px;
+            padding: 10px 40px;
             border-radius: 30px 10px 30px 10px;
-            border: 4px solid #6f866b;
-            box-shadow: 0 9px 0 #22352c;
-            line-height: 1;
+            border: 5px solid #a48362;
+            box-shadow: 0 10px 0 #4d3b2b;
             min-width: 140px;
             text-align: center;
         }
@@ -253,99 +306,164 @@
         .slider-holder {
             flex: 2;
             min-width: 240px;
-            position: relative;
-            padding: 6px 0;
+            padding: 8px 0;
         }
 
         input[type=range] {
             -webkit-appearance: none;
             width: 100%;
-            height: 22px;
-            background: #b2aa92;
+            height: 24px;
+            background: #cbb396;
             border-radius: 40px;
-            border: 3px solid #4b5441;
-            box-shadow: inset 0 3px 8px #1f2f1d;
+            border: 3px solid #7a624b;
+            box-shadow: inset 0 4px 8px #5e4b38;
         }
 
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 46px;
-            height: 46px;
-            background: #dad1b9;
+            width: 52px;
+            height: 52px;
+            background: #e7cfb4;
             border-radius: 60% 20% 60% 20%;
-            border: 5px solid #766045;
-            box-shadow: 0 8px 0 #4f3929, 0 5px 15px black;
+            border: 6px solid #8c6f52;
+            box-shadow: 0 8px 0 #614b36, 0 5px 15px #2d1f14;
             cursor: pointer;
-            margin-top: -12px;
+            margin-top: -16px;
             transition: 0.1s;
         }
 
         input[type=range]::-webkit-slider-thumb:hover {
-            background: #f3e7cf;
-            transform: scale(1.04);
+            background: #fae4cc;
         }
 
-        /* message block with handwriting vibe */
+        .row-duo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .duo-item {
+            flex: 1 1 240px;
+        }
+
+        .duo-item label {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #352618;
+            background: #dbbf9f;
+            padding: 8px 24px;
+            border-radius: 40px 6px 20px 6px;
+            width: fit-content;
+            margin-bottom: 10px;
+            border: 2px solid #8b6e50;
+            box-shadow: 4px 4px 0 #6e553e;
+        }
+
+        .rod-input {
+            width: 100%;
+            background: #f7e5d0;
+            border: 5px solid #a88867;
+            font-size: 1.6rem;
+            padding: 16px 20px;
+            border-radius: 40px 8px 40px 8px;
+            font-family: 'Fraunces', serif;
+            box-shadow: inset 0 4px 10px #b99f82, 0 6px 0 #7a6248;
+            color: #2f261c;
+            font-weight: 500;
+        }
+
+        .rod-input:focus {
+            outline: 4px solid #be935f;
+            background: #fff3e2;
+        }
+
+        .boat-options {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .boat-option {
+            background: #dbbc97;
+            border: 4px solid #826b4f;
+            color: #2b1f13;
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            padding: 14px 28px;
+            border-radius: 50px 12px 50px 12px;
+            cursor: pointer;
+            box-shadow: 0 7px 0 #6f573f, 0 5px 12px #3f2f21;
+            transition: 0.05s;
+            font-weight: 600;
+            flex: 1 0 auto;
+            text-align: center;
+        }
+
+        .boat-option.selected {
+            background: #c58f5a;
+            border-color: #ebbc8b;
+            box-shadow: 0 4px 0 #9e6f43, 0 8px 14px #4f3b28;
+            transform: translateY(3px);
+        }
+
         .message-block {
-            background: #ebddc6;
-            border-radius: 80px 20px 80px 20px;
+            background: #ecdcc9;
+            border-radius: 90px 18px 90px 18px;
             padding: 28px 34px;
-            margin: 32px 0 32px;
-            border: 5px solid #a0977a;
-            box-shadow: 0 15px 0 #575543, 0 18px 25px -8px #1f1f12;
-            transition: 0.25s;
-        }
-
-        .message-block:hover {
-            box-shadow: 0 18px 0 #575543, 0 22px 30px -8px #1f1f12;
+            margin: 32px 0 28px;
+            border: 6px solid #aa8f73;
+            box-shadow: 0 15px 0 #756045, 0 18px 25px -8px #36291d;
         }
 
         .preview {
-            background: #fcf5e6;
+            background: #fcf0de;
             font-family: 'Fraunces', serif;
-            font-size: 1.7rem;
-            font-weight: 500;
+            font-size: 1.6rem;
             line-height: 1.4;
             padding: 28px 32px;
             border-radius: 70px 16px 70px 16px;
-            color: #171d1a;
-            border: 4px solid #8b886b;
-            margin-bottom: 32px;
+            color: #2f231a;
+            border: 5px solid #9b8468;
+            margin-bottom: 30px;
+            box-shadow: inset 0 2px 15px #bb9f83;
             word-break: break-word;
-            box-shadow: inset 0 2px 12px #948c78;
-            letter-spacing: -0.01em;
+            white-space: pre-wrap;
         }
 
         .action-row {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
         }
 
-        .copy-trigger {
-            background: #896a50;
+        .copy-btn {
+            background: #9a7b5c;
             border: none;
-            padding: 20px 32px;
-            border-radius: 120px 20px 120px 20px;
+            padding: 20px 40px;
+            border-radius: 120px 18px 120px 18px;
             font-family: 'Fraunces', serif;
             font-weight: 700;
-            font-size: 1.4rem;
-            color: #f0ead8;
+            font-size: 1.5rem;
+            color: #f2e6d6;
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 20px;
             cursor: pointer;
-            box-shadow: 0 12px 0 #4b392b, 0 15px 22px #221813;
-            transition: 0.06s linear;
-            border: 3px solid #dbbd9c;
+            box-shadow: 0 13px 0 #604b36, 0 15px 25px #2f2218;
+            transition: 0.06s;
+            border: 4px solid #dbbf9b;
             text-transform: uppercase;
         }
 
-        .copy-trigger:active {
-            transform: translateY(6px);
-            box-shadow: 0 6px 0 #4b392b, 0 15px 22px #221813;
+        .copy-btn:active {
+            transform: translateY(7px);
+            box-shadow: 0 6px 0 #604b36, 0 15px 25px #2f2218;
         }
 
         .destinations {
@@ -355,77 +473,113 @@
         }
 
         .dest {
-            background: #c2b3a1;
-            padding: 16px 28px;
+            background: #cbb196;
+            padding: 16px 30px;
             border-radius: 40px 8px 40px 8px;
             text-decoration: none;
-            color: #0b241f;
+            color: #1f2c23;
             font-weight: 600;
             font-family: 'Fraunces', serif;
             font-size: 1.2rem;
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            border: 4px solid #778761;
-            box-shadow: 0 6px 0 #5f604a;
+            border: 5px solid #8c765b;
+            box-shadow: 0 7px 0 #6f5b45;
             transition: 0.1s;
         }
 
         .dest:hover {
-            background: #dbcbb8;
-            transform: translateY(-3px);
-            box-shadow: 0 9px 0 #5f604a;
-        }
-
-        .footnote {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #353f35;
-            background: #dad2bd;
-            padding: 14px 24px;
-            border-radius: 100px;
-            text-align: center;
-            border: 2px solid #887f6a;
-            margin-top: 22px;
-            font-style: italic;
-        }
-
-        /* no emojis — pure css pseudo-elements for some character */
-        .money-unit::before {
-            content: "⌲";
-            font-size: 1.2rem;
-            margin-right: 8px;
-            display: inline-block;
-            color: #3d2e1d;
+            background: #e2cdb3;
+            transform: translateY(-4px);
+            box-shadow: 0 11px 0 #6f5b45;
         }
 
         .dest::after {
             content: "↗";
-            font-size: 1.2rem;
-            margin-left: 10px;
-            font-weight: 500;
+            font-size: 1.3rem;
+            margin-left: 8px;
         }
 
-        /* remove all emoji / font-awesome references */
+        .footnote {
+            background: #e2cfb7;
+            padding: 16px 28px;
+            border-radius: 80px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            border: 3px solid #a18669;
+            color: #382b1f;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        .selected-money-box {
+            text-align: right;
+            margin-top: 18px;
+            font-size: 1.3rem;
+            font-family: 'Fraunces';
+            background: #dac09f;
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 3px solid #8d7254;
+            color: #2d1f12;
+        }
+
+        .audio-placeholder {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.3;
+            transition: opacity 0.2s;
+            background: #5e4a35;
+            padding: 8px 16px;
+            border-radius: 60px;
+            border: 2px solid #ac8f70;
+            color: #ecd6bb;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+        .audio-placeholder:hover {
+            opacity: 1;
+        }
+        .audio-placeholder audio {
+            height: 30px;
+            width: 180px;
+        }
     </style>
 </head>
 <body>
-    <div class="paper">
-        <div class="title-block">
-            <div class="main-title">
-                Fish? Nope!
-                <span>VRChat FISH</span>
-            </div>
-            <div class="strap">
-                accounts for the fishing game — cast & catch
-            </div>
+    <!-- SPLASH OVERLAY: coffee COLORS only, no theme -->
+    <div class="splash-overlay" id="splashOverlay">
+        <div class="splash-card">
+            <h2>Fish? Nope!</h2>
+            <div class="splash-sub">VRChat fishing accounts</div>
+            <div class="click-prompt" id="clickPrompt">click to open</div>
+        </div>
+    </div>
+
+    <!-- background audio player (autoplay, loop, hidden but accessible) -->
+    <div class="audio-placeholder" title="background music - Fish.mp3">
+        <audio id="bgAudio" autoplay loop controls>
+            <source src="Fish.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- MAIN CONTENT (hidden until splash dismissed) -->
+    <div class="folio" id="mainContent" style="display: none;">
+        <div class="heading">
+            <h1>Fish? Nope!<span>VRC FISH</span></h1>
+            <div class="sub">accounts for the fishing game — rods & yachts</div>
         </div>
 
-        <!-- Money selector -->
+        <!-- Money card -->
         <div class="card">
             <div class="card-header">
                 <h2>credit</h2>
-                <div class="stamp">in-game $</div>
+                <div class="badge">in-game $</div>
             </div>
             <div class="money-grid" id="moneyGrid">
                 <button class="money-unit" data-value="1000">1k <small>$</small></button>
@@ -435,8 +589,8 @@
                 <button class="money-unit" data-value="10000000">10M <small>$</small></button>
                 <button class="money-unit" data-value="100000000">100M <small>$</small></button>
             </div>
-            <div style="text-align: right; margin-top: 18px; font-size: 1.2rem; font-family: 'Fraunces'; background: #cec3af; padding: 8px 16px; border-radius: 40px; display: inline-block; border: 2px solid #6b5f4c;">
-                <span style="font-weight: 600;">selected:</span> <span id="selectedMoneyDisplay">1,000</span> $
+            <div class="selected-money-box">
+                <span>selected: </span><span id="selectedMoneyDisplay">1,000</span> $
             </div>
         </div>
 
@@ -444,80 +598,121 @@
         <div class="card">
             <div class="card-header">
                 <h2>rank</h2>
-                <div class="stamp">level 1–500</div>
+                <div class="badge">level 1→500</div>
             </div>
-            <div class="level-zone">
-                <div class="level-row">
-                    <span class="level-label">LV</span>
-                    <span class="level-badge" id="levelValue">250</span>
-                    <div class="slider-holder">
-                        <input type="range" id="levelSlider" min="1" max="500" value="250" step="1">
+            <div class="level-row">
+                <span class="level-tag">LV</span>
+                <span class="level-figure" id="levelValue">250</span>
+                <div class="slider-holder">
+                    <input type="range" id="levelSlider" min="1" max="500" value="250" step="1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Rod & Boat card -->
+        <div class="card">
+            <div class="card-header">
+                <h2>gear</h2>
+                <div class="badge">rod + boat</div>
+            </div>
+
+            <div class="row-duo">
+                <div class="duo-item">
+                    <label>fishing rod</label>
+                    <input type="text" class="rod-input" id="rodInput" placeholder="e.g. Stick'N String, Splinter..." value="Stick'N String">
+                </div>
+                <div class="duo-item">
+                    <label>boat type</label>
+                    <div class="boat-options" id="boatOptions">
+                        <button class="boat-option" data-boat="Luxury boat">Luxury boat</button>
+                        <button class="boat-option" data-boat="Mini Yacht">Mini Yacht</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Message & copy area (no emoji, just text) -->
+        <!-- Message & copy -->
         <div class="message-block">
             <div class="preview" id="messagePreview">
-                Hello! I would Like A Level 250 With 1,000
+                Hello! I would Like A Level 250 With $1,000 And Can I have a Stick'N String and a Luxery Boat
             </div>
 
             <div class="action-row">
-                <button class="copy-trigger" id="copyMessageBtn">
-                    <span>📋</span> copy message
-                </button>
+                <button class="copy-btn" id="copyMessageBtn"><span>📋</span> copy message</button>
                 <div class="destinations">
                     <a href="https://discord.gg/nX2RJM4Cfe" target="_blank" class="dest">Discord server</a>
                     <a href="mailto:FishIdRatherNot@outlook.com" class="dest">Outlook</a>
                 </div>
             </div>
             <div class="footnote">
-                ✎ copy & send in our Discord or via Outlook — we’ll get back to you.
+                ✎ copy the order and send in our Discord or via Outlook — we’ll prepare your catch.
             </div>
         </div>
 
-        <!-- small visual footer -->
-        <div style="display: flex; justify-content: flex-end; font-family: 'Fraunces'; color: #3b4a42; padding: 0 10px; border-top: 2px dotted #9e947b; margin-top: 10px; padding-top: 16px;">
-            <span>Fish? Nope! ~ handmade</span>
+        <!-- tiny footer -->
+        <div style="display: flex; justify-content: flex-end; font-family: 'Fraunces'; color: #5f4a35; border-top: 2px dashed #b2977a; margin-top: 12px; padding-top: 16px;">
+            <span>Fish? Nope! ~ rods & yachts</span>
         </div>
     </div>
 
     <script>
         (function() {
-            // ---------- DOM ----------
+            // Splash screen handling
+            const splash = document.getElementById('splashOverlay');
+            const mainContent = document.getElementById('mainContent');
+            
+            function dismissSplash() {
+                splash.classList.add('hidden');
+                mainContent.style.display = 'block';
+                document.body.style.overflow = 'auto';
+                if (bgAudio) {
+                    bgAudio.volume = 0.4;
+                    bgAudio.play().catch(() => {});
+                }
+            }
+
+            splash.addEventListener('click', dismissSplash);
+
+            // DOM elements for main page
             const moneyButtons = document.querySelectorAll('.money-unit');
             const levelSlider = document.getElementById('levelSlider');
             const levelSpan = document.getElementById('levelValue');
+            const rodInput = document.getElementById('rodInput');
+            const boatOptionButtons = document.querySelectorAll('.boat-option');
             const messagePreview = document.getElementById('messagePreview');
             const selectedMoneySpan = document.getElementById('selectedMoneyDisplay');
             const copyBtn = document.getElementById('copyMessageBtn');
+            const bgAudio = document.getElementById('bgAudio');
 
             // state
-            let currentMoney = 1000;      // default 1k
-            let currentLevel = 250;        // default 250
+            let currentMoney = 1000;
+            let currentLevel = 250;
+            let currentRod = 'Stick\'N String';
+            let currentBoat = 'Luxury boat';
 
-            // helpers
-            function formatWithCommas(val) {
-                return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            function formatMoneyWithDollar(value) {
+                return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             }
 
-            function updateAll() {
-                // update money display
-                selectedMoneySpan.textContent = formatWithCommas(currentMoney);
-                // build message
-                const msg = `Hello! I would Like A Level ${currentLevel} With ${formatWithCommas(currentMoney)}`;
-                messagePreview.textContent = msg;
-                // sync level display
+            function getDisplayBoat(boat) {
+                if (boat === 'Luxury boat') return 'Luxery Boat';
+                return boat;
+            }
+
+            function refreshMessageAndDisplay() {
+                selectedMoneySpan.textContent = currentMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                 levelSpan.textContent = currentLevel;
+                const moneyWithDollar = formatMoneyWithDollar(currentMoney);
+                const displayBoat = getDisplayBoat(currentBoat);
+                const msg = `Hello! I would Like A Level ${currentLevel} With ${moneyWithDollar} And Can I have a ${currentRod} and a ${displayBoat}`;
+                messagePreview.textContent = msg;
             }
 
-            // remove selected class from all money buttons
             function clearMoneySelected() {
                 moneyButtons.forEach(btn => btn.classList.remove('selected'));
             }
 
-            function setActiveMoneyButton(value) {
+            function setActiveMoney(value) {
                 clearMoneySelected();
                 moneyButtons.forEach(btn => {
                     if (parseInt(btn.getAttribute('data-value'), 10) === value) {
@@ -526,35 +721,63 @@
                 });
             }
 
-            // event: money click
+            function clearBoatSelected() {
+                boatOptionButtons.forEach(btn => btn.classList.remove('selected'));
+            }
+
+            function setActiveBoat(boatName) {
+                clearBoatSelected();
+                boatOptionButtons.forEach(btn => {
+                    if (btn.getAttribute('data-boat') === boatName) {
+                        btn.classList.add('selected');
+                    }
+                });
+            }
+
             moneyButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const val = parseInt(this.getAttribute('data-value'), 10);
                     if (!isNaN(val) && val > 0) {
                         currentMoney = val;
-                        setActiveMoneyButton(currentMoney);
-                        updateAll();
+                        setActiveMoney(currentMoney);
+                        refreshMessageAndDisplay();
                     }
                 });
             });
 
-            // level slider
             levelSlider.addEventListener('input', function() {
                 currentLevel = parseInt(this.value, 10);
-                updateAll();
+                refreshMessageAndDisplay();
             });
 
-            // initial selection
-            function init() {
-                currentMoney = 1000;
-                currentLevel = 250;
-                setActiveMoneyButton(1000);
-                levelSlider.value = currentLevel;
-                updateAll();
-            }
-            init();
+            rodInput.addEventListener('input', function() {
+                currentRod = this.value.trim() || '?';
+                refreshMessageAndDisplay();
+            });
 
-            // copy to clipboard
+            boatOptionButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const boat = this.getAttribute('data-boat');
+                    if (boat) {
+                        currentBoat = boat;
+                        setActiveBoat(currentBoat);
+                        refreshMessageAndDisplay();
+                    }
+                });
+            });
+
+            function initialize() {
+                currentMoney = 1000;
+                setActiveMoney(1000);
+                currentLevel = 250;
+                levelSlider.value = currentLevel;
+                currentRod = rodInput.value.trim() || 'Stick\'N String';
+                currentBoat = 'Luxury boat';
+                setActiveBoat(currentBoat);
+                refreshMessageAndDisplay();
+            }
+            initialize();
+
             copyBtn.addEventListener('click', function() {
                 const text = messagePreview.textContent;
                 navigator.clipboard.writeText(text).then(() => {
@@ -566,6 +789,13 @@
                 }).catch(() => {
                     alert('Copy manually:\n' + text);
                 });
+            });
+
+            window.addEventListener('load', () => {
+                if (bgAudio) {
+                    bgAudio.volume = 0.4;
+                    bgAudio.play().catch(() => {});
+                }
             });
         })();
     </script>
